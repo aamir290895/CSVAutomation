@@ -23,6 +23,7 @@ public class WriteCSV {
 		        CSVWriter writer = new CSVWriter(outputfile);
 		        
 		        List<String[]> newList =new ArrayList<>();
+		        newList.add(new String[] {"ID" , "Title" ,"Steps" });
 		        newList.add(ArrangeCSV.csvArray(0, 0, 0, 5));
 		        newList.add(ArrangeCSV.csvArray(0, 0, 10, 5));	
 		        newList.add(ArrangeCSV.csvArray(0, 0, 15, 5));		
