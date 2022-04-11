@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import com.opencsv.exceptions.CsvException;
 
+import Config.ReadCSV;
 import Config.WriteCSV;
 
 public class Test {
@@ -13,20 +14,21 @@ public class Test {
 		
 //		String s = ArrangeCSV.joinString(20, 3);
 ////		
-////		String[] s1 = ReadCSV.arrayOfString(1);
+		String[] s = ReadCSV.arrayOfSplitedString(3);
 ////		
 ////		System.out.println(s1[4]);
 ////		
-////		
-////		for(String x : s) {			
-////			
-////			System.out.println(s + "%%%%");
-////       	}
+////	
+		int p = 0;
+		for(String x : s) {			
+			
+			System.out.println(x + "*" + p++ + "*");
+       	}
 ////		
 //		System.out.println(s + "%%%%");
 
 		
-		   WriteCSV.writeCSV();
+//		   WriteCSV.writeCSV();
 //
 //        List<Data> beans = new CsvToBeanBuilder(new FileReader(FilePath.fileInput))
 //                .withType(Data.class)
