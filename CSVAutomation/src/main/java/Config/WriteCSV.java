@@ -27,12 +27,12 @@ public class WriteCSV {
 		        newList.add(ArrangeCSV.csvArray(0, 0, 0, 5));
 		        newList.add(ArrangeCSV.csvArray(0, 0, 10, 5));	
 		        newList.add(ArrangeCSV.csvArray(0, 0, 15, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 20, 5));		
 		        newList.add(ArrangeCSV.csvArray(0, 0, 25, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 30, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 35, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 36, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 37, 5));		
+		        newList.add(ArrangeCSV.csvArray(0, 0, 25, 5));		
+		        newList.add(ArrangeCSV.csvArray(1, 1, 10, 4));		
+		        newList.add(ArrangeCSV.csvArray(1, 1, 35, 5));		
+		        newList.add(ArrangeCSV.csvArray(3, 0, 36, 5));		
+		        newList.add(ArrangeCSV.csvArray(4, 0, 37, 5));		
 		        newList.add(ArrangeCSV.csvArray(0, 0, 38, 5));		
 
 

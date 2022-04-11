@@ -14,7 +14,8 @@ public class Test {
 		
 //		String s = ArrangeCSV.joinString(20, 3);
 ////		
-		String[] s = ReadCSV.arrayOfSplitedString(3);
+		String[] s = ReadCSV.arrayOfSteps(3);
+		String[] s1 = ReadCSV.arrayOfString(3);
 ////		
 ////		System.out.println(s1[4]);
 ////		

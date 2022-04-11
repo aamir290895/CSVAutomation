@@ -64,5 +64,33 @@ public class ReadCSV {
 		return t;
 
 	}
+	
+	
+	public static String[] arrayOfSteps(int index) throws FileNotFoundException, IOException, CsvException{
+		
+		String[] s = arrayOfString(index);
+        String[] n = {};
+	    List<String> strings = new ArrayList<>();
+        
+       
+        
+        for(String x : s) {
+        	n= x.split( "[\\d][.]");
+        	
+        	for(String y: n) {
+        		
+        		strings.add(y);
+        	}
+        	
+        }
+        
+		n = strings.toArray(new String[strings.size()]);
+
+		
+		return n;
+		
+		
+		
+	}
 
 }
