@@ -11,40 +11,30 @@ import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
 public class WriteCSV {
-	
+
 	public static void writeCSV() throws CsvException, FileNotFoundException, IOException {
-		
-		
-		
-		 File file = new File(FilePath.fileOutput);
-		    try {
-		        FileWriter outputfile = new FileWriter(file);
-		  
-		        CSVWriter writer = new CSVWriter(outputfile);
-		        
-		        List<String[]> newList =new ArrayList<>();
-		        newList.add(new String[] {"ID" , "Title" ,"Steps" , "Expected Results"});
-		        newList.add(ArrangeCSV.csvArray(0, 0, 0, 5));
-		        newList.add(ArrangeCSV.csvArray(0, 0, 10, 5));	
-		        newList.add(ArrangeCSV.csvArray(0, 0, 15, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 25, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 25, 5));		
-		        newList.add(ArrangeCSV.csvArray(1, 1, 10, 4));		
-		        newList.add(ArrangeCSV.csvArray(1, 1, 35, 5));		
-		        newList.add(ArrangeCSV.csvArray(3, 0, 36, 5));		
-		        newList.add(ArrangeCSV.csvArray(4, 0, 37, 5));		
-		        newList.add(ArrangeCSV.csvArray(0, 0, 38, 5));		
 
+		File file = new File(FilePath.fileOutput);
+		try {
+			FileWriter outputfile = new FileWriter(file);
 
-		        writer.writeAll(newList);
-		       
-	   
-		        writer.close();
-		    }
-		    catch (IOException e) {
-		        // TODO Auto-generated catch block
-		        e.printStackTrace();
-		    }
+			CSVWriter writer = new CSVWriter(outputfile);
+
+			List<String[]> newList = new ArrayList<>();
+			newList.add(new String[] { "ID", "Title", "Steps", "Expected Results" });
+			newList.add(ArrangeCSV.csvArray(0, 1, 0, 1));
+			newList.add(ArrangeCSV.csvArray(0, 0, 1, 2));
+			newList.add(ArrangeCSV.csvArray(0, 0, 2, 3));
+			newList.add(ArrangeCSV.csvArray(0, 0, 3, 4));
+			newList.add(ArrangeCSV.csvArray(0, 0, 4, 5));
+
+			writer.writeAll(newList);
+
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

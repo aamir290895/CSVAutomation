@@ -44,53 +44,76 @@ public class ReadCSV {
 
 	}
 
-	public static String[] arrayOfSplitedString(int index) throws FileNotFoundException, IOException, CsvException {
+//	public static String[] arrayOfSplitedString(int index) throws FileNotFoundException, IOException, CsvException {
+//
+//		String[] s = arrayOfString(index);
+//
+//		String[] t = {};
+//
+//		List<String> strings = new ArrayList<>();
+//
+//		for (String x : s) {
+//
+//			x.lines().forEach(c -> strings.add(c));
+//			t = strings.toArray(new String[strings.size()]);
+//
+//		}
+//
+//		return t;
+//
+//	}
 
-		String[] s = arrayOfString(index);
+	public static String joinString() throws FileNotFoundException, IOException, CsvException {
+		String[] steps = ReadCSV.arrayOfString(3);
 
-		String[] t = {};
+		String output = "";
+
+		for (String x: steps) {
+
+			output = output + "\n" + x;
+
+		}
+		return output;
+
+	}
+
+	public static String[] arrayOfRawSteps(int index) throws FileNotFoundException, IOException, CsvException {
+
+		String s = joinString();
+		String[] n = {};
 		
-	    List<String> strings = new ArrayList<>();
+
+		n = s.split("[\\d][.]");
+
+		return n;
+
+	}
+
+	public static String[] arrayOfStepsAndExpectedResults() throws FileNotFoundException, IOException, CsvException {
+
+		String[] s = arrayOfRawSteps(3);
+		String[] n = {};
+		List<String> strings = new ArrayList<>();
 
 		for (String x : s) {
+			n = x.split("Expected Result:");
 
-			x.lines().forEach(c -> strings.add(c));
-			t = strings.toArray(new String[strings.size()]);
+			for (String y : n) {
+
+				strings.add(y);
+			}
 
 		}
 
+		n = strings.toArray(new String[strings.size()]);
 
-
-		return t;
+		return n;
 
 	}
 	
 	
-	public static String[] arrayOfSteps(int index) throws FileNotFoundException, IOException, CsvException{
-		
-		String[] s = arrayOfString(index);
-        String[] n = {};
-	    List<String> strings = new ArrayList<>();
-        
-       
-        
-        for(String x : s) {
-        	n= x.split( "[\\d][.]");
-        	
-        	for(String y: n) {
-        		
-        		strings.add(y);
-        	}
-        	
-        }
-        
-		n = strings.toArray(new String[strings.size()]);
-
-		
-		return n;
-		
-		
-		
+	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
+		System.out.println(joinString());
 	}
 
 }
