@@ -12,7 +12,7 @@ import com.opencsv.exceptions.CsvException;
 
 public class WriteCSV {
 
-	public static void writeCSV() throws CsvException, FileNotFoundException, IOException {
+	public static void writeCSV(List<String[]> list) throws CsvException, FileNotFoundException, IOException {
 
 		File file = new File(FilePath.fileOutput);
 		try {
@@ -21,14 +21,13 @@ public class WriteCSV {
 			CSVWriter writer = new CSVWriter(outputfile);
 
 			List<String[]> newList = new ArrayList<>();
-			newList.add(new String[] { "ID", "Title", "Steps", "Expected Results" });
-			newList.add(ArrangeCSV.csvArray(0, 1, 0, 1));
-			newList.add(ArrangeCSV.csvArray(0, 0, 1, 2));
-			newList.add(ArrangeCSV.csvArray(0, 0, 2, 3));
-			newList.add(ArrangeCSV.csvArray(0, 0, 3, 4));
-			newList.add(ArrangeCSV.csvArray(0, 0, 4, 5));
+			newList.add(ArrangeCSV.csvArray(0, 1, 0));
+			newList.add(ArrangeCSV.csvArray(0, 0, 1));
+			newList.add(ArrangeCSV.csvArray(0, 0, 2));
+			newList.add(ArrangeCSV.csvArray(0, 0, 3));
+			newList.add(ArrangeCSV.csvArray(0, 0, 4));
 
-			writer.writeAll(newList);
+			writer.writeAll(list);
 
 			writer.close();
 		} catch (IOException e) {
