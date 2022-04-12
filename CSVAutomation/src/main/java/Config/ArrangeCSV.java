@@ -12,7 +12,7 @@ import com.opencsv.exceptions.CsvException;
 
 public class ArrangeCSV {
 
-	public static String[] csvArray(int a, int b, int c)
+	public static String[] csvArray(int a, int b, int c , int x)
 			throws FileNotFoundException, IOException, CsvException {
 
 		String[] id = ReadCSV.arrayOfString(0);
@@ -22,8 +22,13 @@ public class ArrangeCSV {
 		String[] steps = steps();
 
 		String[] expectedResult = expectedResults();
+		
+		String repeatedId = new String(new char[a]). replace("\0", id[x]);
+		
+		String repeatedTitle = new String(new char[b]). replace("\0", title[x]);
 
-		String[] output = { id[a], title[b], steps[c], expectedResult[c+1]};
+
+		String[] output = { repeatedId, repeatedTitle, steps[c], expectedResult[c+1]};
 
 		return output;
 

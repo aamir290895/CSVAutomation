@@ -31,6 +31,8 @@ public class ReadCSV {
 
 	}
 
+	
+
 	public static String[] arrayOfString(int index) throws FileNotFoundException, IOException, CsvException {
 
 		Set<String> s = readIndex(index);
@@ -44,31 +46,12 @@ public class ReadCSV {
 
 	}
 
-//	public static String[] arrayOfSplitedString(int index) throws FileNotFoundException, IOException, CsvException {
-//
-//		String[] s = arrayOfString(index);
-//
-//		String[] t = {};
-//
-//		List<String> strings = new ArrayList<>();
-//
-//		for (String x : s) {
-//
-//			x.lines().forEach(c -> strings.add(c));
-//			t = strings.toArray(new String[strings.size()]);
-//
-//		}
-//
-//		return t;
-//
-//	}
-
 	public static String joinString() throws FileNotFoundException, IOException, CsvException {
 		String[] steps = ReadCSV.arrayOfString(3);
 
 		String output = "";
 
-		for (String x: steps) {
+		for (String x : steps) {
 
 			output = output + "\n" + x;
 
@@ -81,7 +64,6 @@ public class ReadCSV {
 
 		String s = joinString();
 		String[] n = {};
-		
 
 		n = s.split("[\\d][.]");
 
@@ -110,10 +92,32 @@ public class ReadCSV {
 		return n;
 
 	}
-	
-	
+
+	public static List<Integer> countSteps(int index) throws FileNotFoundException, IOException, CsvException {
+
+		String[] steps = arrayOfString(index);
+
+		String[] n = {};
+
+		List<Integer> list = new ArrayList<>();
+
+		for (String x : steps) {
+
+			n = x.split("[\\d][.]");
+			int count = n.length;
+			list.add(count);
+
+		}
+
+		return list;
+
+	}
+
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
-		System.out.println(joinString());
+
+		List<Integer> list = countSteps(0);
+		
+		System.out.println(list.toString());
 	}
 
 }

@@ -18,9 +18,11 @@ public class Test {
 
 //		String s = ArrangeCSV.joinString(20, 3);
 ////		
-		String[] s = ArrangeCSV.steps();
+//		String[] s = ArrangeCSV.steps();
+		
+//		Set<String> s = ReadCSV.readInputCSV();
 
-//		List<String[]> list = ArrangeCSV.setsOfErAndSteps();
+		List<String[]> list = DataFill.arrangeData();
 		int p = 0;
 //
 //		for (String x : list.get(0)) {
@@ -29,9 +31,14 @@ public class Test {
 //
 //		}
 //
-		for (String y : s) {
+		for (String[] y : list) {
+			
+			for(String x: y) {
+				
+				System.out.println(x + p++ );
+			}
 
-			System.out.println(y );
+			
 
 		}
 

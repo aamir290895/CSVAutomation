@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.java.automatecsv.CSVAutomation.DataFill;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
@@ -19,13 +20,6 @@ public class WriteCSV {
 			FileWriter outputfile = new FileWriter(file);
 
 			CSVWriter writer = new CSVWriter(outputfile);
-
-			List<String[]> newList = new ArrayList<>();
-			newList.add(ArrangeCSV.csvArray(0, 1, 0));
-			newList.add(ArrangeCSV.csvArray(0, 0, 1));
-			newList.add(ArrangeCSV.csvArray(0, 0, 2));
-			newList.add(ArrangeCSV.csvArray(0, 0, 3));
-			newList.add(ArrangeCSV.csvArray(0, 0, 4));
 
 			writer.writeAll(list);
 

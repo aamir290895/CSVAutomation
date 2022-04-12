@@ -8,37 +8,51 @@ import java.util.List;
 import com.opencsv.exceptions.CsvException;
 
 import Config.ArrangeCSV;
+import Config.ReadCSV;
 
 public class DataFill {
-	
-	
-	public static List<String[]> setData() throws FileNotFoundException, IOException, CsvException{
+
+//	public static List<String[]> setData() throws FileNotFoundException, IOException, CsvException {
+//
+//		List<String[]> list = new ArrayList<String[]>();
+//		list.add(new String[] { "ID", "Title", "Steps", "Expected Results" });
+//
+//		list.addAll(arrangeData());
+//
+//		return list;
+//
+//	}
+
+	public static List<String[]> arrangeData() throws FileNotFoundException, IOException, CsvException {
 		
-		List<String[]> list = new ArrayList<String[]>();
-		list.add(new String[] { "ID", "Title", "Steps", "Expected Results" });
-		list.add(ArrangeCSV.csvArray(0, 1, 1));
-		list.add(ArrangeCSV.csvArray(0, 0, 2));
-		list.add(ArrangeCSV.csvArray(0, 0, 3));
-		list.add(ArrangeCSV.csvArray(1, 2, 4));
-		list.add(ArrangeCSV.csvArray(1, 0, 5));
-		list.add(ArrangeCSV.csvArray(1, 0, 6));
-		list.add(ArrangeCSV.csvArray(1, 0, 7));
-		list.add(ArrangeCSV.csvArray(1, 0, 8));
-		list.add(ArrangeCSV.csvArray(1, 0, 9));
-		list.add(ArrangeCSV.csvArray(1, 0, 10));
-		list.add(ArrangeCSV.csvArray(1, 0, 11));
-		list.add(ArrangeCSV.csvArray(1, 0, 12));
-		list.add(ArrangeCSV.csvArray(1, 0, 13));
-		list.add(ArrangeCSV.csvArray(2, 3, 14));
-		list.add(ArrangeCSV.csvArray(2, 0, 15));
+	    String[] s = ArrangeCSV.steps();
 		
+		List<Integer> steps = ReadCSV.countSteps(3);
+		
+		List<Integer> id = ReadCSV.countSteps(0);
+
+		List<Integer> title = ReadCSV.countSteps(1);
 
 		
 		
+
+
+		List<String[]> list = new ArrayList<String[]>();
+		list.add(new String[] {"ID" , "Title" , "Steps" ,"Expected Result:"});
+
+		int j = list.size() + 1;
 		
+		
+		
+		for(int i=0;i<=s.length;i++) {
+			
+			
+			list.add(ArrangeCSV.csvArray(steps.get(i), 1, steps.get(i)+j, id.get(i)));
+		}
+		
+
 		return list;
-		
-		
+
 	}
 
 }
