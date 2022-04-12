@@ -16,8 +16,8 @@ public class App
     public static void main( String[] args ) throws FileNotFoundException, CsvException, IOException
     {
     	
-    	WriteCSV.writeCSV(DataFill.arrangeData());
+    	WriteCSV.writeCSV(DataFill.setData());
     	
-    	System.out.println("Congratulations ! your output csv file generate.......");
+    	System.out.println("Congratulations! your output csv file generate.......");
     }
 }

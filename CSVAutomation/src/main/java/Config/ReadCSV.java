@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -99,7 +100,7 @@ public class ReadCSV {
 
 		String[] n = {};
 
-		List<Integer> list = new ArrayList<>();
+		List<Integer> list = new LinkedList<>();
 
 		for (String x : steps) {
 
@@ -115,7 +116,7 @@ public class ReadCSV {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
 
-		List<Integer> list = countSteps(0);
+		List<Integer> list = countSteps(3);
 		
 		System.out.println(list.toString());
 	}
