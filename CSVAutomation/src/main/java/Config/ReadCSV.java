@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,8 +14,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
 public class ReadCSV {
-
-	public static Set<String> readIndex(int index) throws FileNotFoundException, IOException, CsvException {
+	public static List<String> readIndex(int index) throws FileNotFoundException, IOException, CsvException {
 
 		List<String[]> data = null;
 
@@ -22,18 +22,16 @@ public class ReadCSV {
 			data = reader.readAll();
 		}
 
-		Set<String> set = new HashSet<>();
+		List<String> list = new ArrayList<String>();
 		for (String[] arrays : data)
-			set.add(arrays[index]);
-		return set;
+			list.add(arrays[index]);
+		return list;
 
 	}
 
-	
-
 	public static String[] arrayOfString(int index) throws FileNotFoundException, IOException, CsvException {
 
-		Set<String> s = readIndex(index);
+		List<String> s = readIndex(index);
 
 		String[] arrayOfString = new String[s.size()];
 
@@ -44,8 +42,8 @@ public class ReadCSV {
 
 	}
 
-	public static String joinString() throws FileNotFoundException, IOException, CsvException {
-		String[] steps = ReadCSV.arrayOfString(3);
+	public static String joinString(int index) throws FileNotFoundException, IOException, CsvException {
+		String[] steps = ReadCSV.arrayOfString(index);
 
 		String output = "";
 
@@ -58,9 +56,9 @@ public class ReadCSV {
 
 	}
 
-	public static String[] arrayOfRawSteps(int index) throws FileNotFoundException, IOException, CsvException {
+	public static String[] arrayOfRawSteps() throws FileNotFoundException, IOException, CsvException {
 
-		String s = joinString();
+		String s = joinString(3);
 		String[] n = {};
 
 		n = s.split("[\\d][.]");
@@ -71,7 +69,7 @@ public class ReadCSV {
 
 	public static String[] arrayOfStepsAndExpectedResults() throws FileNotFoundException, IOException, CsvException {
 
-		String[] s = arrayOfRawSteps(3);
+		String[] s = arrayOfRawSteps();
 		String[] n = {};
 		List<String> strings = new ArrayList<>();
 
@@ -86,6 +84,17 @@ public class ReadCSV {
 		}
 
 		n = strings.toArray(new String[strings.size()]);
+
+		return n;
+
+	}
+
+	public static String[] arrayOfIDS() throws FileNotFoundException, IOException, CsvException {
+
+		String s = joinString(0);
+		String[] n = {};
+
+		n = s.split("");
 
 		return n;
 
@@ -109,13 +118,6 @@ public class ReadCSV {
 
 		return list;
 
-	}
-
-	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
-
-		List<Integer> list = countSteps(3);
-		
-		System.out.println(list.toString());
 	}
 
 }

@@ -16,17 +16,17 @@ public class Test {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException,ArrayIndexOutOfBoundsException {
 
-		String[] titles = ReadCSV.arrayOfString(1);
-		
-		String[] raw = ArrangeCSV.stepsArray();
+		String[] id =ReadCSV.arrayOfString(1);
+		int i=0;
+		for(String x:id) {
+			i++;
+			System.out.println(x +"^^^" +i);
+		}
 		
 		
 
 		
-//		for (int i = 0; i <= s.length-1; i++) {
-//
-//			System.out.println(s[0] + "^^" );
-//		}
+		
 
 	}
 
