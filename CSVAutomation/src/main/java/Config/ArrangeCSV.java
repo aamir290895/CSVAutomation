@@ -27,7 +27,11 @@ public class ArrangeCSV {
 		list.add(" ");
 		list2.add(" ");
 		list3.add(" ");
+		list3.add(" ");
+
 		list4.add(" ");
+		list4.add(" ");
+
 
 
 		for (String x : titles) {
@@ -77,7 +81,7 @@ public class ArrangeCSV {
 				listSteps.add(raw[i]);
 			} else {
 
-				System.out.println(raw[i]);
+				System.out.println(i);
 			}
 
 		}
@@ -101,7 +105,7 @@ public class ArrangeCSV {
 				listSteps.add(raw[j]);
 			} else {
 
-				System.out.println(raw[j]);
+				System.out.println(j);
 			}
 		}
 

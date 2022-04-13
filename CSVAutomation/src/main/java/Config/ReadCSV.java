@@ -71,6 +71,7 @@ public class ReadCSV {
 
 		String[] s = arrayOfRawSteps();
 		String[] n = {};
+		String[] k = {};
 		List<String> strings = new ArrayList<>();
 
 		for (String x : s) {
@@ -83,9 +84,9 @@ public class ReadCSV {
 
 		}
 
-		n = strings.toArray(new String[strings.size()]);
+		k = strings.toArray(new String[strings.size()]);
 
-		return n;
+		return k;
 
 	}
 

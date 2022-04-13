@@ -30,7 +30,7 @@ public class DataFill {
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-        String[] er = ArrangeCSV.expectedResults();
+        String[] er = ArrangeCSV.stepsArray();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
 		
