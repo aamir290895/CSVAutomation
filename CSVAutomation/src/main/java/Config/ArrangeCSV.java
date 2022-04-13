@@ -57,7 +57,7 @@ public class ArrangeCSV {
 		String[] expectedResult2 = list4.toArray(new String[list4.size()]);
 
 
-		String[] output = { ids2[a], titles2[b], steps2[c], expectedResult2[c] };
+		String[] output = { ids2[a], titles2[b], steps2[c], expectedResult2[c+1] };
 
 		return output;
 

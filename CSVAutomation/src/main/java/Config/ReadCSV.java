@@ -49,7 +49,7 @@ public class ReadCSV {
 
 		for (String x : steps) {
 
-			output = output + "\n" + x;
+			output = output + x;
 
 		}
 		return output;
@@ -89,16 +89,7 @@ public class ReadCSV {
 
 	}
 
-	public static String[] arrayOfIDS() throws FileNotFoundException, IOException, CsvException {
-
-		String s = joinString(0);
-		String[] n = {};
-
-		n = s.split("");
-
-		return n;
-
-	}
+	
 
 	public static List<Integer> countSteps(int index) throws FileNotFoundException, IOException, CsvException {
 
