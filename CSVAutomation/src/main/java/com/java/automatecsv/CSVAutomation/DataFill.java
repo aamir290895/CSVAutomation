@@ -15,7 +15,7 @@ public class DataFill {
 	public static List<String[]> setData() throws FileNotFoundException, IOException, CsvException {
 
 		List<String[]> list = new ArrayList<String[]>();
-		list.add(new String[] { "ID", "Title", "Steps", "Expected Results" });
+		list.add(new String[] { "ID", "Title", "Test Type", "Steps", "Data","Expected Results" , "Summary" });
 
 		list.addAll(arrangeData());
 

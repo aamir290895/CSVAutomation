@@ -49,7 +49,7 @@ public class ReadCSV {
 
 		for (String x : steps) {
 
-			output = output + x;
+			output = output.concat(x);
 
 		}
 		return output;

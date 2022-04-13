@@ -61,7 +61,7 @@ public class ArrangeCSV {
 		String[] expectedResult2 = list4.toArray(new String[list4.size()]);
 
 
-		String[] output = { ids2[a], titles2[b], steps2[c], expectedResult2[c+1] };
+		String[] output = { ids2[a], titles2[b], " ",steps2[c], " " ,expectedResult2[c+1], " " };
 
 		return output;
 
@@ -77,7 +77,7 @@ public class ArrangeCSV {
 
 		for (int i = 0; i <= raw.length - 1; i++) {
 
-			if (i % 2 == 1) {
+			if (i % 2 == 0) {
 				listSteps.add(raw[i]);
 			} else {
 
@@ -101,7 +101,7 @@ public class ArrangeCSV {
 
 		for (int j = 0; j <= raw.length - 1; j++) {
 
-			if (j % 2 == 0) {
+			if (j % 2 == 1) {
 				listSteps.add(raw[j]);
 			} else {
 
