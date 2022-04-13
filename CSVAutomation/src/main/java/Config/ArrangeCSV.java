@@ -14,43 +14,70 @@ public class ArrangeCSV {
 		String[] ids = ReadCSV.arrayOfString(0);
 
 		String[] titles = ReadCSV.arrayOfString(1);
-		
-		List<String> list = new ArrayList<String>();
-		list.add(" ");
-		
-		for(String x: titles) {
-			
-			list.add(x);
-		}
-		
-		String[] titles2= list.toArray(new String[list.size()]);
 
 		String[] steps = stepsArray();
-
 		String[] expectedResult = expectedResults();
 
-		String[] output = { ids[a], titles2[b+1], steps[c], expectedResult[c] };
+		List<String> list = new ArrayList<String>();
+
+		List<String> list2 = new ArrayList<String>();
+		List<String> list3 = new ArrayList<String>();
+		List<String> list4 = new ArrayList<String>();
+
+		list.add(" ");
+		list2.add(" ");
+		list3.add(" ");
+		list4.add(" ");
+
+
+		for (String x : titles) {
+
+			list.add(x);
+		}
+
+		for (String y : ids) {
+
+			list2.add(y);
+		}
+
+		for (String z : steps) {
+
+			list3.add(z);
+		}
+
+		for (String k : expectedResult) {
+
+			list4.add(k);
+		}
+
+		String[] titles2 = list.toArray(new String[list.size()]);
+
+		String[] ids2 = list2.toArray(new String[list2.size()]);
+		String[] steps2 = list3.toArray(new String[list3.size()]);
+		String[] expectedResult2 = list4.toArray(new String[list4.size()]);
+
+
+		String[] output = { ids2[a], titles2[b], steps2[c], expectedResult2[c] };
 
 		return output;
 
 	}
 
-	public static String[] expectedResults()
+	public static String[] stepsArray()
 			throws FileNotFoundException, IOException, CsvException, ArrayIndexOutOfBoundsException {
-		
 
 		String[] raw = ReadCSV.arrayOfStepsAndExpectedResults();
 		String[] steps = {};
-		
+
 		List<String> listSteps = new ArrayList<String>();
 
-		for (int i = 0; i<=raw.length-1; i++) {
+		for (int i = 0; i <= raw.length - 1; i++) {
 
 			if (i % 2 == 1) {
 				listSteps.add(raw[i]);
 			} else {
-				
-				System.out.println(i);
+
+				System.out.println(raw[i]);
 			}
 
 		}
@@ -60,22 +87,21 @@ public class ArrangeCSV {
 		return steps;
 	}
 
-	public static String[] stepsArray()
+	public static String[] expectedResults()
 			throws FileNotFoundException, IOException, CsvException, ArrayIndexOutOfBoundsException {
 
 		String[] raw = ReadCSV.arrayOfStepsAndExpectedResults();
 		String[] steps = {};
-		
+
 		List<String> listSteps = new ArrayList<>();
 
-
-		for (int j = 0; j<=raw.length-1; j++) {
+		for (int j = 0; j <= raw.length - 1; j++) {
 
 			if (j % 2 == 0) {
 				listSteps.add(raw[j]);
 			} else {
-				
-				System.out.println(j);
+
+				System.out.println(raw[j]);
 			}
 		}
 
@@ -99,7 +125,5 @@ public class ArrangeCSV {
 		return s;
 
 	}
-
-	
 
 }
