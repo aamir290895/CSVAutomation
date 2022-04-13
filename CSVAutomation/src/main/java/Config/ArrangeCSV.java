@@ -29,7 +29,7 @@ public class ArrangeCSV {
 
 		String[] expectedResult = expectedResults();
 
-		String[] output = { ids[a], titles2[b], steps[c], expectedResult[c] };
+		String[] output = { ids[a], titles2[b+1], steps[c], expectedResult[c] };
 
 		return output;
 

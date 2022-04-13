@@ -19,9 +19,10 @@ public class Test {
 		String[] titles = ReadCSV.arrayOfString(1);
 		
 		String[] raw = ArrangeCSV.stepsArray();
+		
+		
 
 		
-		System.out.println(raw.length);
 //		for (int i = 0; i <= s.length-1; i++) {
 //
 //			System.out.println(s[0] + "^^" );

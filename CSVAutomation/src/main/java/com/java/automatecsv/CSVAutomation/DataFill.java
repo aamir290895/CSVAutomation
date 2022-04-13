@@ -30,7 +30,7 @@ public class DataFill {
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-
+        String[] er = ArrangeCSV.expectedResults();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
 		
@@ -38,7 +38,7 @@ public class DataFill {
 
 
 
-		for (int j = 0; j <= ids.length-1; j++) {
+		for (int j = 0; j <= er.length-1; j++) {
 
 			// 1 //2 //9 //3
 			title.add(j);
@@ -51,11 +51,11 @@ public class DataFill {
 			}
 
 		}
-		int c = numOfIds.size()-1;
+		int c = er.length-1;
 
 		for (int i = 0; i <= c; i++) {
 
-			list.add(ArrangeCSV.csvArray(numOfIds.indexOf(i), title.indexOf(i), i));
+			list.add(ArrangeCSV.csvArray(numOfIds.get(i), title.get(i), i));
 		}
 
 		return list;
@@ -69,7 +69,7 @@ public class DataFill {
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-        String[] steps2 = ArrangeCSV.stepsArray();
+        String[] steps2 = ReadCSV.arrayOfStepsAndExpectedResults();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
 		
@@ -77,7 +77,7 @@ public class DataFill {
 
 
 
-		for (int j = 0; j <= ids.length-1; j++) {
+		for (int j = 0; j <= 100-1; j++) {
 
 			// 1 //2 //9 //3
 			title.add(j);
@@ -96,9 +96,9 @@ public class DataFill {
 //			
 //		}
 		
-		System.out.println(title.size());
+		System.out.println(title.get(1));
 		System.out.println(numOfIds.size());
-		System.out.println(steps2.length);
+		System.out.println(steps.size());
 
 	}
 	
