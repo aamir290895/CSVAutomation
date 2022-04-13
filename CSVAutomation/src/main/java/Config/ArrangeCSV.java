@@ -3,11 +3,7 @@ package Config;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import com.opencsv.exceptions.CsvException;
 
@@ -18,34 +14,44 @@ public class ArrangeCSV {
 		String[] ids = ReadCSV.arrayOfString(0);
 
 		String[] titles = ReadCSV.arrayOfString(1);
+		
+		List<String> list = new ArrayList<String>();
+		list.add(" ");
+		
+		for(String x: titles) {
+			
+			list.add(x);
+		}
+		
+		String[] titles2= list.toArray(new String[list.size()]);
 
-		String[] steps = steps();
+		String[] steps = stepsArray();
 
 		String[] expectedResult = expectedResults();
 
-		String[] output = { ids[a], titles[b], steps[c], expectedResult[c] };
+		String[] output = { ids[a], titles2[b], steps[c], expectedResult[c] };
 
 		return output;
 
 	}
 
-
-
 	public static String[] expectedResults()
 			throws FileNotFoundException, IOException, CsvException, ArrayIndexOutOfBoundsException {
+		
 
 		String[] raw = ReadCSV.arrayOfStepsAndExpectedResults();
 		String[] steps = {};
+		
 		List<String> listSteps = new ArrayList<String>();
-		listSteps.add(raw[0]);
 
-		for (int i = 0; i <= raw.length; i++) {
+		for (int i = 0; i<=raw.length-1; i++) {
 
-			listSteps.add(raw[i + 2]);
-			
-			System.out.println(raw[i+1]);
-
-
+			if (i % 2 == 1) {
+				listSteps.add(raw[i]);
+			} else {
+				
+				System.out.println(i);
+			}
 
 		}
 
@@ -54,24 +60,28 @@ public class ArrangeCSV {
 		return steps;
 	}
 
-	public static String[] steps()
+	public static String[] stepsArray()
 			throws FileNotFoundException, IOException, CsvException, ArrayIndexOutOfBoundsException {
 
 		String[] raw = ReadCSV.arrayOfStepsAndExpectedResults();
-		String[] er = {};
-		List<String> strings = new ArrayList<String>();
-		strings.add(raw[1]);
+		String[] steps = {};
+		
+		List<String> listSteps = new ArrayList<>();
 
-		for (int j = 1; j <= raw.length; j++) {
-			strings.add(raw[j + 2]);
-			
-			System.out.println(raw[j+1]);
 
+		for (int j = 0; j<=raw.length-1; j++) {
+
+			if (j % 2 == 0) {
+				listSteps.add(raw[j]);
+			} else {
+				
+				System.out.println(j);
+			}
 		}
 
-		er = strings.toArray(new String[strings.size()]);
+		steps = listSteps.toArray(new String[listSteps.size()]);
 
-		return er;
+		return steps;
 	}
 
 	public static List<Integer> repeatInt(int a) throws FileNotFoundException, IOException, CsvException {
@@ -89,13 +99,7 @@ public class ArrangeCSV {
 		return s;
 
 	}
-	
-	public static void main(String[] args) throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
-		String[] s = ArrangeCSV.steps();
-		for (int i = 0; i <= s.length; i++) {
 
-			System.out.println(s[i] + "^^" );
-		}
-	}
+	
 
 }

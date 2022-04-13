@@ -4,14 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import com.opencsv.CSVReader;
-import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.exceptions.CsvException;
 
 public class ReadCSV {
@@ -26,7 +24,6 @@ public class ReadCSV {
 
 		Set<String> set = new HashSet<>();
 		for (String[] arrays : data)
-
 			set.add(arrays[index]);
 		return set;
 
@@ -100,7 +97,7 @@ public class ReadCSV {
 
 		String[] n = {};
 
-		List<Integer> list = new LinkedList<>();
+		List<Integer> list = new ArrayList<>();
 
 		for (String x : steps) {
 

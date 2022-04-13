@@ -12,6 +12,13 @@ public class Test2 {
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
 		
+		String[] titles = ReadCSV.arrayOfString(1);
+		int i =0;
+		for(String x: titles) {
+			
+			System.out.println(x + i++);
+		}
+		
 	}
 
 }

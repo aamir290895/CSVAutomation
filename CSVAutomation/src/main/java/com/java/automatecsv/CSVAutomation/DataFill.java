@@ -24,14 +24,13 @@ public class DataFill {
 	}
 
 	public static List<String[]> arrangeData() throws FileNotFoundException, IOException, CsvException {
+		List<String[]> list = new ArrayList<String[]>();
 
 		List<Integer> steps = ReadCSV.countSteps(3);
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-		String[] testSteps = ArrangeCSV.steps();
 
-		List<String[]> list = new ArrayList<String[]>();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
 		
@@ -39,18 +38,20 @@ public class DataFill {
 
 
 
-		for (int j = 0; j <= ids.length; j++) {
+		for (int j = 0; j <= ids.length-1; j++) {
 
-			int q = steps.get(j);// 1 //2 //9 //3
-			
-			for(int k=0; k<=q; k++) {
+			// 1 //2 //9 //3
+			title.add(j);
+			numOfIds.add(j);
+
+			for(int k=0; k<=steps.indexOf(j)-1; k++) {
 				
 				numOfIds.add(j);
 				title.add(0);
 			}
 
 		}
-		int c = testSteps.length;
+		int c = numOfIds.size()-1;
 
 		for (int i = 0; i <= c; i++) {
 
@@ -61,33 +62,45 @@ public class DataFill {
 
 	}
 	
-	
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
+		List<String[]> list = new ArrayList<String[]>();
+
 		List<Integer> steps = ReadCSV.countSteps(3);
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-		String[] testSteps = ArrangeCSV.steps();
-
-		List<String[]> list = new ArrayList<String[]>();
+        String[] steps2 = ArrangeCSV.stepsArray();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
+		
+		List<Integer> title = new ArrayList<Integer>();
 
-		int c = testSteps.length;
 
-		for (int j = 0; j <= ids.length; j++) {
 
-			int q = steps.get(j);// 1 //2 //9 //3
-			
-			for(int k=0; k<=q; k++) {
+		for (int j = 0; j <= ids.length-1; j++) {
+
+			// 1 //2 //9 //3
+			title.add(j);
+			numOfIds.add(j);
+			for(int k=0; k<=steps.indexOf(j)-1; k++) {
 				
 				numOfIds.add(j);
+				title.add(0);
 			}
 
 		}
 		
-		System.out.println(numOfIds.get(3));
+//		for(int x : numOfIds) {
+//			
+//			System.out.println(x);
+//			
+//		}
+		
+		System.out.println(title.size());
+		System.out.println(numOfIds.size());
+		System.out.println(steps2.length);
 
 	}
+	
 
 }
