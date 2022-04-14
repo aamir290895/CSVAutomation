@@ -30,7 +30,7 @@ public class DataFill {
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-        String[] er = ArrangeCSV.stepsArray();
+        String[] er = ReadCSV.arrayOfSteps();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
 		
@@ -69,7 +69,6 @@ public class DataFill {
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-        String[] steps2 = ReadCSV.arrayOfStepsAndExpectedResults();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
 		
@@ -96,11 +95,9 @@ public class DataFill {
 //			
 //		}
 		
-		System.out.println(title.get(1));
+		System.out.println(title.size());
 		System.out.println(numOfIds.size());
-		System.out.println(steps.size());
 
 	}
-	
 
 }

@@ -67,30 +67,57 @@ public class ReadCSV {
 
 	}
 
-	public static String[] arrayOfStepsAndExpectedResults() throws FileNotFoundException, IOException, CsvException {
+	public static String[] arrayOfSteps()
+			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
 
 		String[] s = arrayOfRawSteps();
-		String[] n = {};
-		String[] k = {};
-		List<String> strings = new ArrayList<>();
+
+		String[] step = {};
+
+		List<String> steps = new ArrayList<>();
 
 		for (String x : s) {
-			n = x.split("Expected Result:");
-
-			for (String y : n) {
-
-				strings.add(y);
-			}
+			String[] n = x.split("Expected Result:", 0);
+			steps.add(n[0]);
+//            ers.add(n.length);
+//            
 
 		}
 
-		k = strings.toArray(new String[strings.size()]);
+		step = steps.toArray(new String[steps.size()]);
 
-		return k;
+		return step;
 
 	}
 
-	
+	public static String[] expectedResults()
+			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
+
+		String[] s = arrayOfRawSteps();
+
+		String[] er = {};
+
+		List<String> ers = new ArrayList<>();
+
+		for (String x : s) {
+			String[] n = x.split("Expected Result:", 0);
+			
+			if(n.length ==2) {
+				ers.add(n[1]);
+			}else {
+				
+				ers.add(" ");
+			}
+//            ers.add(n.length);
+//            
+
+		}
+
+		er = ers.toArray(new String[ers.size()]);
+
+		return er;
+
+	}
 
 	public static List<Integer> countSteps(int index) throws FileNotFoundException, IOException, CsvException {
 
@@ -109,6 +136,19 @@ public class ReadCSV {
 		}
 
 		return list;
+
+	}
+
+	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
+		String[] s = arrayOfRawSteps();
+
+		int i = 0;
+		for (String x : s) {
+			i++;
+			String[] n = x.split("Expected Result:", 2);
+
+			System.out.println(n.length);
+		}
 
 	}
 
