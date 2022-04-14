@@ -77,7 +77,7 @@ public class ReadCSV {
 		List<String> steps = new ArrayList<>();
 
 		for (String x : s) {
-			String[] n = x.split("Expected Result:", 0);
+			String[] n = x.split("Expected Result:", 2);
 			
 			if(n.length ==2) {
 				steps.add(n[0]);
@@ -101,11 +101,11 @@ public class ReadCSV {
 		String[] er = {};
 
 		List<String> ers = new ArrayList<>();
-		String y = "";
 
 		for (String x : s) {
-			String[] n = x.split("Expected Result:", 0);
-			
+			String[] n = x.split("Expected Result:", 2);
+			String y = "";
+
 			if(n.length ==2) {
 				y += n[1];
 			}else {
@@ -140,7 +140,7 @@ public class ReadCSV {
 
 		for (String x : steps) {
 
-			String[] n = x.split("Expected Result:",0);
+			String[] n = x.split("Expected Result:",2);
 
 			if(n.length ==2) {
 				count++;
