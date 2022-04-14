@@ -26,7 +26,7 @@ public class DataFill {
 	public static List<String[]> arrangeData() throws FileNotFoundException, IOException, CsvException {
 		List<String[]> list = new ArrayList<String[]>();
 
-		List<Integer> steps = ReadCSV.countSteps(3);
+		List<Integer> steps = ReadCSV.countSteps();
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
@@ -65,7 +65,7 @@ public class DataFill {
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
 		List<String[]> list = new ArrayList<String[]>();
 
-		List<Integer> steps = ReadCSV.countSteps(3);
+		List<Integer> steps = ReadCSV.countSteps();
 
 		String[] ids = ReadCSV.arrayOfString(0);
 

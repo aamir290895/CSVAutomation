@@ -78,8 +78,11 @@ public class ReadCSV {
 
 		for (String x : s) {
 			String[] n = x.split("Expected Result:", 0);
-			steps.add(n[0]);
-//            ers.add(n.length);
+			
+			if(n.length ==2) {
+				steps.add(n[0]);
+			}else {
+			}
 //            
 
 		}
@@ -98,17 +101,17 @@ public class ReadCSV {
 		String[] er = {};
 
 		List<String> ers = new ArrayList<>();
+		String y = "";
 
 		for (String x : s) {
 			String[] n = x.split("Expected Result:", 0);
 			
 			if(n.length ==2) {
-				ers.add(n[1]);
+				y += n[1];
 			}else {
-				
-				ers.add(" ");
+				y += n[0];
 			}
-//            ers.add(n.length);
+            ers.add(y);
 //            
 
 		}
@@ -118,19 +121,33 @@ public class ReadCSV {
 		return er;
 
 	}
+	
+	
+	
+	public static String[] testType() throws FileNotFoundException, IOException, CsvException {
+		
+		
+		return null;	
+	}
 
-	public static List<Integer> countSteps(int index) throws FileNotFoundException, IOException, CsvException {
+	public static List<Integer> countSteps() throws FileNotFoundException, IOException, CsvException {
 
-		String[] steps = arrayOfString(index);
+		String[] steps = arrayOfRawSteps();
 
-		String[] n = {};
 
 		List<Integer> list = new ArrayList<>();
+		int count = 0;
 
 		for (String x : steps) {
 
-			n = x.split("[\\d][.]");
-			int count = n.length;
+			String[] n = x.split("Expected Result:",0);
+
+			if(n.length ==2) {
+				count++;
+			}else {
+				
+			}
+
 			list.add(count);
 
 		}
@@ -140,14 +157,13 @@ public class ReadCSV {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
-		String[] s = arrayOfRawSteps();
+		List<Integer> counts = countSteps();
 
 		int i = 0;
-		for (String x : s) {
+		for (int x : counts) {
 			i++;
-			String[] n = x.split("Expected Result:", 2);
 
-			System.out.println(n.length);
+			System.out.println(x);
 		}
 
 	}
