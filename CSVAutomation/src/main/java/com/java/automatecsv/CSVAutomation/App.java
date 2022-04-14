@@ -15,7 +15,8 @@ public class App
 {
     public static void main( String[] args ) throws FileNotFoundException, CsvException, IOException
     {
-    	
+    	System.out.println("wait till file generated.......");
+
     	WriteCSV.writeCSV(DataFill.setData());
     	
     	System.out.println("Congratulations! your output csv file generate.......");
