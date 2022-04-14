@@ -19,18 +19,26 @@ public class ArrangeCSV {
 
 		String[] steps = ReadCSV.arrayOfSteps();
 		String[] expectedResult = ReadCSV.expectedResults();
+		
+		String[] testTypes = testTypes();
 
 		List<String> list = new ArrayList<String>();
 
 		List<String> list2 = new ArrayList<String>();
 		List<String> list3 = new ArrayList<String>();
 		List<String> list4 = new ArrayList<String>();
+		
+		List<String> list5 = new ArrayList<String>();
+
+		
+		
 
 		list.add(" ");
 		list2.add(" ");
 		list3.add(" ");
 
 		list4.add(" ");
+		list5.add(" ");
 		
 		
 		for (String x : titles) {
@@ -52,14 +60,22 @@ public class ArrangeCSV {
 
 			list4.add(k);
 		}
+		
+		for (String k : testTypes) {
+
+			list5.add(k);
+		}
+      
       
 		String[] titles2 = list.toArray(new String[list.size()]);
 
 		String[] ids2 = list2.toArray(new String[list2.size()]);
 		String[] steps2 = list3.toArray(new String[list3.size()]);
 		String[] expectedResult2 = list4.toArray(new String[list4.size()]);
+		String[] testTypes2 = list5.toArray(new String[list5.size()]);
 
-		String[] output = { ids2[a], titles2[b], " ", steps2[c], " ", expectedResult2[c], " " };
+
+		String[] output = { ids2[a], titles2[b], testTypes2[b], steps2[c], " ", expectedResult2[c], " " };
 
 		return output;
 
@@ -85,4 +101,26 @@ public class ArrangeCSV {
 
 	}
 
+	
+	
+	public static String[] testTypes() throws CsvException , IOException{
+		
+		
+		
+		String[] title = ReadCSV.arrayOfString(1);
+		
+		List<String> list = new ArrayList<String>();
+		
+		
+		for(int i=0;i<= title.length-1;i++) {
+			
+			list.add("Manual");
+			
+		}
+		return list.toArray(new String[list.size()]);
+		
+		
+	}
 }
+
+
