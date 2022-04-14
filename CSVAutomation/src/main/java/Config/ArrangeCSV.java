@@ -8,6 +8,8 @@ import java.util.List;
 import com.opencsv.exceptions.CsvException;
 
 public class ArrangeCSV {
+	
+	
 
 	public static String[] csvArray(int a, int b, int c) throws FileNotFoundException, IOException, CsvException {
 
@@ -29,7 +31,8 @@ public class ArrangeCSV {
 		list3.add(" ");
 
 		list4.add(" ");
-
+		
+		
 		for (String x : titles) {
 
 			list.add(x);
@@ -49,7 +52,7 @@ public class ArrangeCSV {
 
 			list4.add(k);
 		}
-
+      
 		String[] titles2 = list.toArray(new String[list.size()]);
 
 		String[] ids2 = list2.toArray(new String[list2.size()]);
