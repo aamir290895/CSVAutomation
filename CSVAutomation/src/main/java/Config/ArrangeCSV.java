@@ -27,9 +27,7 @@ public class ArrangeCSV {
 		list.add(" ");
 		list2.add(" ");
 		list3.add(" ");
-		list3.add(" ");
 
-		list4.add(" ");
 		list4.add(" ");
 
 		for (String x : titles) {
