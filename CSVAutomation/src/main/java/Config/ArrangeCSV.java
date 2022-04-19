@@ -8,8 +8,6 @@ import java.util.List;
 import com.opencsv.exceptions.CsvException;
 
 public class ArrangeCSV {
-	
-	
 
 	public static String[] csvArray(int a, int b, int c) throws FileNotFoundException, IOException, CsvException {
 
@@ -33,12 +31,6 @@ public class ArrangeCSV {
 		
 		
 
-		list.add(" ");
-		list2.add(" ");
-		list3.add(" ");
-
-		list4.add(" ");
-		list5.add(" ");
 		
 		
 		for (String x : titles) {
@@ -65,7 +57,13 @@ public class ArrangeCSV {
 
 			list5.add(k);
 		}
-      
+		list.add(" ");
+		list2.add(" ");
+		list3.add(" ");
+
+		list4.add(" ");
+		list5.add(" ");
+		
       
 		String[] titles2 = list.toArray(new String[list.size()]);
 
@@ -80,10 +78,6 @@ public class ArrangeCSV {
 		return output;
 
 	}
-
-	
-
-
 
 	public static List<Integer> repeatInt(int a) throws FileNotFoundException, IOException, CsvException {
 
@@ -101,26 +95,26 @@ public class ArrangeCSV {
 
 	}
 
-	
-	
-	public static String[] testTypes() throws CsvException , IOException{
-		
-		
-		
+	public static String[] testTypes() throws CsvException, IOException {
+
 		String[] title = ReadCSV.arrayOfString(1);
-		
+
 		List<String> list = new ArrayList<String>();
-		
-		
-		for(int i=0;i<= title.length-1;i++) {
-			
+
+		for (int i = 0; i <= title.length - 1; i++) {
+
 			list.add("Manual");
-			
+
 		}
 		return list.toArray(new String[list.size()]);
-		
-		
+
+	}
+	
+	
+	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
+		for(String x: csvArray(3, 3, 3)) {
+			
+			System.out.println(x);
+		}
 	}
 }
-
-

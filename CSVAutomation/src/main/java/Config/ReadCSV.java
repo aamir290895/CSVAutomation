@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,45 +49,51 @@ public class ReadCSV {
 		String output = "";
 
 		for (String x : steps) {
+			if (x == null) {
+				output = output.concat("1.Automated Expected Result: Automated");
+			} else {
 
-			output = output.concat(x);
-
+				output = output.concat(x);
+			}
 		}
 		return output;
 
 	}
 
-	public static String[] arrayOfRawSteps() throws FileNotFoundException, IOException, CsvException {
+	public static List<String[]> arrayOfRawSteps() throws FileNotFoundException, IOException, CsvException {
 
-		String s = joinString(3);
+		String[] s = arrayOfString(3);
 		String[] n = {};
+		List<String[]> list = new ArrayList<String[]>();
 
-		n = s.split("[\\d][.]");
+		for (String x : s) {
+			n = x.split("[\\d][.]");
+			list.add(n);
+		}
 
-		return n;
+		return list;
 
 	}
 
 	public static String[] arrayOfSteps()
 			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
 
-		String[] s = arrayOfRawSteps();
+		List<String[]> s = arrayOfRawSteps();
 
 		String[] step = {};
 
 		List<String> steps = new ArrayList<>();
-
-		for (String x : s) {
-			String[] n = x.split("Expected Result:", 2);
-			
-			if(n.length ==2) {
-				steps.add(n[0]);
-			}else {
-			}
+		for (int i = 0; i <= s.size() - 1; i++) {
+			for (String x : s.get(i)) {
+				String[] n = x.split("Expected Result:", 2);
+				if (n.length == 2) {
+					steps.add(n[0]);
+				} else {
+				}
 //            
 
+			}
 		}
-
 		step = steps.toArray(new String[steps.size()]);
 
 		return step;
@@ -96,75 +103,76 @@ public class ReadCSV {
 	public static String[] expectedResults()
 			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
 
-		String[] s = arrayOfRawSteps();
+		List<String[]> s = arrayOfRawSteps();
 
-		String[] er = {};
+		String[] step = {};
 
-		List<String> ers = new ArrayList<>();
-
-		for (String x : s) {
-			String[] n = x.split("Expected Result:", 2);
-			String y = "";
-
-			if(n.length ==2) {
-				y += n[1];
-			}else {
-				y += n[0];
-			}
-            ers.add(y);
+		List<String> steps = new ArrayList<>();
+		for (int i = 0; i <= s.size() - 1; i++) {
+			for (String x : s.get(i)) {
+				String[] n = x.split("Expected Result:", 2);
+                String y = "";
+				if (n.length == 2) {
+					steps.add(n[1]);
+				} else {
+				}
 //            
 
+			}
 		}
+		step = steps.toArray(new String[steps.size()]);
 
-		er = ers.toArray(new String[ers.size()]);
-
-		return er;
+		return step;
 
 	}
-	
-	
-	
+
 	public static String[] testType() throws FileNotFoundException, IOException, CsvException {
-		
-		
-		return null;	
+
+		return null;
 	}
 
 	public static List<Integer> countSteps() throws FileNotFoundException, IOException, CsvException {
 
-		String[] steps = arrayOfRawSteps();
-
+		String[] steps = arrayOfString(3);
 
 		List<Integer> list = new ArrayList<>();
+		List<Integer> list2 = new ArrayList<>();
+
 		int count = 0;
 
-		for (String x : steps) {
+		for (int k = 0; k <= steps.length - 1; k++) {
+			count = k;
 
-			String[] n = x.split("Expected Result:",2);
+			String[] n = steps[k].split("Expected Result:");
 
-			if(n.length ==2) {
-				count++;
-			}else {
-				
+			for (int i = 0; i <= n.length - 2; i++) {
+
+				if (n[i] != null) {
+
+					list.add(count);
+				}
 			}
 
-			list.add(count);
-
+		}
+		int noOfTimes = 0;
+		for (int y = 0; y <= steps.length - 1; y++) {
+			noOfTimes = Collections.frequency(list, y);
+			list2.add(noOfTimes);
 		}
 
-		return list;
+		return list2;
 
 	}
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
 		List<Integer> counts = countSteps();
+		int y = 0;
 
-		int i = 0;
 		for (int x : counts) {
-			i++;
+			y=y+x;
 
-			System.out.println(x);
 		}
+		System.out.println(y);
 
 	}
 

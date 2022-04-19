@@ -15,7 +15,7 @@ public class DataFill {
 	public static List<String[]> setData() throws FileNotFoundException, IOException, CsvException {
 
 		List<String[]> list = new ArrayList<String[]>();
-		list.add(new String[] { "ID", "Title", "Test Type", "Steps", "Data","Expected Results" , "Summary" });
+		list.add(new String[] { "ID", "Title", "Test Type", "Steps", "Data", "Expected Results", "Summary" });
 
 		list.addAll(arrangeData());
 
@@ -24,36 +24,34 @@ public class DataFill {
 	}
 
 	public static List<String[]> arrangeData() throws FileNotFoundException, IOException, CsvException {
-		List<String[]> list = new ArrayList<String[]>();
 
 		List<Integer> steps = ReadCSV.countSteps();
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
-        String[] er = ReadCSV.arrayOfSteps();
+		String[] er = ReadCSV.expectedResults();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
-		
+
 		List<Integer> title = new ArrayList<Integer>();
+		List<String[]> list = new ArrayList<String[]>();
 
-
-
-		for (int j = 0; j <= er.length-1; j++) {
+		for (int j = 0; j <= steps.size() - 1; j++) {
 
 			// 1 //2 //9 //3
 			title.add(j);
 			numOfIds.add(j);
+			for (int k = 1; k < steps.get(j); k++) {
 
-			for(int k=0; k<=steps.indexOf(j)-1; k++) {
-				
 				numOfIds.add(j);
-				title.add(0);
+				title.add(ids.length );
+
 			}
 
 		}
-		int c = er.length-1;
+		int c = er.length;
 
-		for (int i = 0; i <= c; i++) {
+		for (int i = 0; i < c; i++) {
 
 			list.add(ArrangeCSV.csvArray(numOfIds.get(i), title.get(i), i));
 		}
@@ -61,43 +59,37 @@ public class DataFill {
 		return list;
 
 	}
-	
+
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException {
-		List<String[]> list = new ArrayList<String[]>();
 
 		List<Integer> steps = ReadCSV.countSteps();
 
 		String[] ids = ReadCSV.arrayOfString(0);
 
+		String[] er = ReadCSV.arrayOfSteps();
 
 		List<Integer> numOfIds = new ArrayList<Integer>();
-		
+
 		List<Integer> title = new ArrayList<Integer>();
 
-
-
-		for (int j = 0; j <= 100-1; j++) {
+		for (int j = 0; j < steps.size() - 1; j++) {
 
 			// 1 //2 //9 //3
 			title.add(j);
 			numOfIds.add(j);
-			for(int k=0; k<=steps.indexOf(j)-1; k++) {
-				
+
+			for (int k = 1; k < steps.get(j); k++) {
+
 				numOfIds.add(j);
-				title.add(0);
+				title.add(ids.length);
+
 			}
 
 		}
-		
-//		for(int x : numOfIds) {
-//			
-//			System.out.println(x);
-//			
-//		}
-		
-		System.out.println(title.size());
-		System.out.println(numOfIds.size());
 
+		System.out.println(numOfIds);
+		System.out.println(er.length);
+
+		System.out.println(title);
 	}
-
 }
