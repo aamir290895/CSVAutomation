@@ -65,12 +65,14 @@ public class ReadCSV {
 		String[] s = arrayOfString(3);
 		String[] n = {};
 		List<String[]> list = new ArrayList<String[]>();
-
+        
 		for (String x : s) {
-			if (x != null) {
+			
+			if (x.isBlank()==false) {
 				n = x.split("[\\d][.]");
 				list.add(n);
-			}else {
+			} else if (x.isBlank()==true) {
+				list.add(new String[] { " NA Expected Result: NA" });
 			}
 		}
 
@@ -92,6 +94,7 @@ public class ReadCSV {
 				if (n.length == 2) {
 					steps.add(n[0]);
 				} else {
+					steps.add(n[0]);
 				}
 //            
 
@@ -172,10 +175,9 @@ public class ReadCSV {
 		int y = 0;
 
 		for (int x : counts) {
-			y = y + x;
+			System.out.println(x);
 
 		}
-		System.out.println(y);
 
 	}
 
