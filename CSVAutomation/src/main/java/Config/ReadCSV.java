@@ -43,22 +43,22 @@ public class ReadCSV {
 
 	}
 
-	public static String joinString(int index) throws FileNotFoundException, IOException, CsvException {
-		String[] steps = ReadCSV.arrayOfString(index);
-
-		String output = "";
-
-		for (String x : steps) {
-			if (x == null) {
-				output = output.concat("1.Automated Expected Result: Automated");
-			} else {
-
-				output = output.concat(x);
-			}
-		}
-		return output;
-
-	}
+//	public static String joinString(int index) throws FileNotFoundException, IOException, CsvException {
+//		String[] steps = ReadCSV.arrayOfString(index);
+//
+//		String output = "";
+//
+//		for (String x : steps) {
+//			if (x == null) {
+//				output = output.concat("1.Automated Expected Result: Automated");
+//			} else {
+//
+//				output = output.concat(x);
+//			}
+//		}
+//		return output;
+//
+//	}
 
 	public static List<String[]> arrayOfRawSteps() throws FileNotFoundException, IOException, CsvException {
 
@@ -67,8 +67,11 @@ public class ReadCSV {
 		List<String[]> list = new ArrayList<String[]>();
 
 		for (String x : s) {
-			n = x.split("[\\d][.]");
-			list.add(n);
+			if (x != null) {
+				n = x.split("[\\d][.]");
+				list.add(n);
+			}else {
+			}
 		}
 
 		return list;
@@ -111,7 +114,7 @@ public class ReadCSV {
 		for (int i = 0; i <= s.size() - 1; i++) {
 			for (String x : s.get(i)) {
 				String[] n = x.split("Expected Result:", 2);
-                String y = "";
+				String y = "";
 				if (n.length == 2) {
 					steps.add(n[1]);
 				} else {
@@ -169,7 +172,7 @@ public class ReadCSV {
 		int y = 0;
 
 		for (int x : counts) {
-			y=y+x;
+			y = y + x;
 
 		}
 		System.out.println(y);
