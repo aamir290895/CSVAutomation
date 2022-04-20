@@ -23,7 +23,7 @@ public class ReadCSV {
 			data = reader.readAll();
 		}
 
-		List<String> list = new ArrayList<String>();
+		List<String> list = new LinkedList<String>();
 		for (String[] arrays : data)
 			list.add(arrays[index]);
 		return list;
@@ -64,15 +64,17 @@ public class ReadCSV {
 
 		String[] s = arrayOfString(3);
 		String[] n = {};
-		List<String[]> list = new ArrayList<String[]>();
+		List<String[]> list = new LinkedList<String[]>();
         
 		for (String x : s) {
 			
-			if (x.isBlank()==false) {
+			if (x.isBlank()==true) {
+				list.add(new String[] { " NA Expected Result: NA" });
+
+				
+			} else {
 				n = x.split("[\\d][.]");
 				list.add(n);
-			} else if (x.isBlank()==true) {
-				list.add(new String[] { " NA Expected Result: NA" });
 			}
 		}
 
@@ -87,7 +89,7 @@ public class ReadCSV {
 
 		String[] step = {};
 
-		List<String> steps = new ArrayList<>();
+		List<String> steps = new LinkedList<>();
 		for (int i = 0; i <= s.size() - 1; i++) {
 			for (String x : s.get(i)) {
 				String[] n = x.split("Expected Result:", 2);
@@ -113,7 +115,7 @@ public class ReadCSV {
 
 		String[] step = {};
 
-		List<String> steps = new ArrayList<>();
+		List<String> steps = new LinkedList<>();
 		for (int i = 0; i <= s.size() - 1; i++) {
 			for (String x : s.get(i)) {
 				String[] n = x.split("Expected Result:", 2);
@@ -121,7 +123,6 @@ public class ReadCSV {
 				if (n.length == 2) {
 					steps.add(n[1]);
 				} else {
-					steps.add(y);
 				}
 //            
 
