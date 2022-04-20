@@ -121,6 +121,7 @@ public class ReadCSV {
 				if (n.length == 2) {
 					steps.add(n[1]);
 				} else {
+					steps.add("NA");
 				}
 //            
 
