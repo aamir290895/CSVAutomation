@@ -16,7 +16,7 @@ public class Test {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, CsvException,ArrayIndexOutOfBoundsException {
 
-		String[] titles = ReadCSV.arrayOfSteps();
+		String[] titles = ReadCSV.expectedResults();
 
 		int i=0;
 		for(String x :titles) {
