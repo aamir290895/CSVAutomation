@@ -43,67 +43,71 @@ public class ReadCSV {
 
 	}
 
-//	public static String joinString(int index) throws FileNotFoundException, IOException, CsvException {
-//		String[] steps = ReadCSV.arrayOfString(index);
-//
-//		String output = "";
-//
-//		for (String x : steps) {
-//			if (x == null) {
-//				output = output.concat("1.Automated Expected Result: Automated");
-//			} else {
-//
-//				output = output.concat(x);
-//			}
-//		}
-//		return output;
-//
-//	}
-
 	public static List<String[]> arrayOfRawSteps() throws FileNotFoundException, IOException, CsvException {
 
 		String[] s = arrayOfString(3);
 		String[] n = {};
 		List<String[]> list = new LinkedList<String[]>();
-        
-		for (String x : s) {
-			
-			if (x.isBlank()==true) {
-				list.add(new String[] { " NA Expected Result: NA" });
 
-				
-			} else {
+		for (String x : s) {
+			if (x.isBlank() == false) {
 				n = x.split("[\\d][.]");
 				list.add(n);
+
+			} else {
+
+				list.add(new String[] { " 1. NA Expected Result: NA" });
 			}
+
 		}
 
 		return list;
 
 	}
 
+	public static String[] filterString() throws FileNotFoundException, IOException, CsvException {
+
+		List<String[]> listSteps = arrayOfRawSteps();
+
+		List<String> listPre = new LinkedList<String>();
+		for (String[] x : listSteps) {
+
+			for (String y : x) {
+
+				if (y.split("Expected Result:", 2).length != 2 && y.isBlank() == false) {
+					listPre.add(y + "Expected Result: NA");
+
+				} else if (y.isBlank() == false) {
+					listPre.add(y);
+				}
+
+			}
+
+		}
+		return listPre.toArray(new String[listPre.size()]);
+
+	}
+
 	public static String[] arrayOfSteps()
 			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
 
-		List<String[]> s = arrayOfRawSteps();
+		String[] s = filterString();
 
 		String[] step = {};
 
 		List<String> steps = new LinkedList<>();
-		for (int i = 0; i <= s.size() - 1; i++) {
-			for (String x : s.get(i)) {
-				String[] n = x.split("Expected Result:", 2);
-				if (n.length == 2) {
-					steps.add(n[0]);
-				} else {
-					steps.add(n[0]);
-				}
-//            
+		String y = "";
 
+		for (String x : s) {
+
+			String[] n = x.split("Expected Result:", 2);
+			if (n.length == 2) {
+				y = n[0];
+			} else {
 			}
+			steps.add(y);
 		}
 		step = steps.toArray(new String[steps.size()]);
-
 		return step;
 
 	}
@@ -111,37 +115,42 @@ public class ReadCSV {
 	public static String[] expectedResults()
 			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
 
-		List<String[]> s = arrayOfRawSteps();
+		String[] s = filterString();
 
 		String[] step = {};
 
 		List<String> steps = new LinkedList<>();
-		for (int i = 0; i <= s.size() - 1; i++) {
-			for (String x : s.get(i)) {
-				String[] n = x.split("Expected Result:", 2);
-				String y = "";
-				if (n.length == 2) {
-					steps.add(n[1]);
-				} else {
-				}
-//            
+		String y = "";
 
+		for (String x : s) {
+
+			String[] n = x.split("Expected Result:", 2);
+			if (n.length == 2) {
+				y = n[1];
+			} else {
 			}
+			steps.add(y);
 		}
 		step = steps.toArray(new String[steps.size()]);
-
 		return step;
 
 	}
 
-	public static String[] testType() throws FileNotFoundException, IOException, CsvException {
-
-		return null;
-	}
-
 	public static List<Integer> countSteps() throws FileNotFoundException, IOException, CsvException {
 
-		String[] steps = arrayOfString(3);
+		String[] s = arrayOfString(3);
+		List<String> listPre = new LinkedList<String>();
+		for (String x : s) {
+
+			if(x.isBlank() == true) {
+				listPre.add("1. NA Expected Result: NA");
+				
+			}else {
+				
+				listPre.add(x);
+			}
+		}
+		String[] steps = listPre.toArray(new String[listPre.size()]);
 
 		List<Integer> list = new ArrayList<>();
 		List<Integer> list2 = new ArrayList<>();
@@ -151,14 +160,12 @@ public class ReadCSV {
 		for (int k = 0; k <= steps.length - 1; k++) {
 			count = k;
 
-			String[] n = steps[k].split("Expected Result:");
+			String[] n = steps[k].split("[\\d][.]");
 
 			for (int i = 0; i <= n.length - 2; i++) {
 
-				if (n[i] != null) {
+				list.add(count);
 
-					list.add(count);
-				}
 			}
 
 		}
@@ -177,9 +184,10 @@ public class ReadCSV {
 		int y = 0;
 
 		for (int x : counts) {
-			System.out.println(x);
+			y += x;
 
 		}
+		System.out.println(y);
 
 	}
 
