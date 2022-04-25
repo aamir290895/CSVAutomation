@@ -75,15 +75,14 @@ public class ReadCSV {
 		List<String> steps = new LinkedList<>();
 		for (int i = 0; i <= s.size() - 1; i++) {
 			for (String x : s.get(i)) {
-				
-				
-			  if (x.contains("Expected Result:") == true) {
-				  String[] n = x.split("Expected Result:" , 2);
-				  steps.add(n[0]);
-				  
-			  }else if(x.isBlank()==false && x.contains("Expected Result:") == false){
-				  steps.add(x);
-			  }
+
+				if (x.contains("Expected Result:") == true) {
+					String[] n = x.split("Expected Result:", 2);
+					steps.add(n[0]);
+
+				} else if (x.isBlank() == false && x.contains("Expected Result:") == false) {
+					steps.add(x);
+				}
 
 			}
 		}
@@ -103,15 +102,14 @@ public class ReadCSV {
 		List<String> steps = new LinkedList<>();
 		for (int i = 0; i <= s.size() - 1; i++) {
 			for (String x : s.get(i)) {
-				
-				
-			  if (x.contains("Expected Result:") == true) {
-				  String[] n = x.split("Expected Result:" , 2);
-				  steps.add(n[1]);
-				  
-			  }else if(x.isBlank()==false && x.contains("Expected Result:") == false){
-				  steps.add("NA");
-			  }
+
+				if (x.contains("Expected Result:") == true) {
+					String[] n = x.split("Expected Result:", 2);
+					steps.add(n[1]);
+
+				} else if (x.isBlank() == false && x.contains("Expected Result:") == false) {
+					steps.add("NA");
+				}
 
 			}
 		}
@@ -138,6 +136,8 @@ public class ReadCSV {
 
 				String y = x.replaceAll(x, "NA Expected Result: NA");
 				ls.add(y);
+			} else if (x.isBlank() == false && x.contains("Expected Result:") == false) {
+				ls.add(x.concat("Expected Result: NA"));
 			} else {
 				ls.add(x);
 			}
@@ -153,7 +153,7 @@ public class ReadCSV {
 		for (int k = 0; k <= steps.length - 1; k++) {
 			count = k;
 
-			String[] n = steps[k].split("Expected Result:");
+			String[] n = steps[k].split("[\\d][.]");
 
 			for (int i = 0; i <= n.length - 2; i++) {
 
