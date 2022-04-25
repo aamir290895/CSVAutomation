@@ -15,6 +15,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
 public class ReadCSV {
+
 	public static List<String> readIndex(int index) throws FileNotFoundException, IOException, CsvException {
 
 		List<String[]> data = null;
@@ -50,64 +51,44 @@ public class ReadCSV {
 		List<String[]> list = new LinkedList<String[]>();
 
 		for (String x : s) {
-			if (x.isBlank() == false) {
-				n = x.split("[\\d][.]");
-				list.add(n);
+
+			if (x.isBlank() == true) {
+				list.add(new String[] { " NA Expected Result: NA" });
 
 			} else {
-
-				list.add(new String[] { " 1. NA Expected Result: NA" });
+				n = x.split("[\\d][.]");
+				list.add(n);
 			}
-
 		}
 
 		return list;
 
 	}
 
-	public static String[] filterString() throws FileNotFoundException, IOException, CsvException {
-
-		List<String[]> listSteps = arrayOfRawSteps();
-
-		List<String> listPre = new LinkedList<String>();
-		for (String[] x : listSteps) {
-
-			for (String y : x) {
-
-				if (y.split("Expected Result:", 2).length != 2 && y.isBlank() == false) {
-					listPre.add(y + "Expected Result: NA");
-
-				} else if (y.isBlank() == false) {
-					listPre.add(y);
-				}
-
-			}
-
-		}
-		return listPre.toArray(new String[listPre.size()]);
-
-	}
-
 	public static String[] arrayOfSteps()
 			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
 
-		String[] s = filterString();
+		List<String[]> s = arrayOfRawSteps();
 
 		String[] step = {};
 
 		List<String> steps = new LinkedList<>();
-		String y = "";
+		for (int i = 0; i <= s.size() - 1; i++) {
+			for (String x : s.get(i)) {
+				
+				
+			  if (x.contains("Expected Result:") == true) {
+				  String[] n = x.split("Expected Result:" , 2);
+				  steps.add(n[0]);
+				  
+			  }else if(x.isBlank()==false && x.contains("Expected Result:") == false){
+				  steps.add(x);
+			  }
 
-		for (String x : s) {
-
-			String[] n = x.split("Expected Result:", 2);
-			if (n.length == 2) {
-				y = n[0];
-			} else {
 			}
-			steps.add(y);
 		}
 		step = steps.toArray(new String[steps.size()]);
+
 		return step;
 
 	}
@@ -115,42 +96,54 @@ public class ReadCSV {
 	public static String[] expectedResults()
 			throws ArrayIndexOutOfBoundsException, FileNotFoundException, IOException, CsvException {
 
-		String[] s = filterString();
+		List<String[]> s = arrayOfRawSteps();
 
 		String[] step = {};
 
 		List<String> steps = new LinkedList<>();
-		String y = "";
+		for (int i = 0; i <= s.size() - 1; i++) {
+			for (String x : s.get(i)) {
+				
+				
+			  if (x.contains("Expected Result:") == true) {
+				  String[] n = x.split("Expected Result:" , 2);
+				  steps.add(n[1]);
+				  
+			  }else if(x.isBlank()==false && x.contains("Expected Result:") == false){
+				  steps.add("NA");
+			  }
 
-		for (String x : s) {
-
-			String[] n = x.split("Expected Result:", 2);
-			if (n.length == 2) {
-				y = n[1];
-			} else {
 			}
-			steps.add(y);
 		}
 		step = steps.toArray(new String[steps.size()]);
+
 		return step;
 
 	}
 
+	public static String[] testType() throws FileNotFoundException, IOException, CsvException {
+
+		return null;
+	}
+
 	public static List<Integer> countSteps() throws FileNotFoundException, IOException, CsvException {
 
-		String[] s = arrayOfString(3);
-		List<String> listPre = new LinkedList<String>();
-		for (String x : s) {
+		String[] pre = arrayOfString(3);
 
-			if(x.isBlank() == true) {
-				listPre.add("1. NA Expected Result: NA");
-				
-			}else {
-				
-				listPre.add(x);
+		List<String> ls = new ArrayList<String>();
+
+		for (String x : pre) {
+
+			if (x.isBlank() == true) {
+
+				String y = x.replaceAll(x, "NA Expected Result: NA");
+				ls.add(y);
+			} else {
+				ls.add(x);
 			}
 		}
-		String[] steps = listPre.toArray(new String[listPre.size()]);
+
+		String[] steps = ls.toArray(new String[ls.size()]);
 
 		List<Integer> list = new ArrayList<>();
 		List<Integer> list2 = new ArrayList<>();
@@ -160,12 +153,14 @@ public class ReadCSV {
 		for (int k = 0; k <= steps.length - 1; k++) {
 			count = k;
 
-			String[] n = steps[k].split("[\\d][.]");
+			String[] n = steps[k].split("Expected Result:");
 
 			for (int i = 0; i <= n.length - 2; i++) {
 
-				list.add(count);
+				if (n[i] != null) {
 
+					list.add(count);
+				}
 			}
 
 		}
@@ -184,6 +179,7 @@ public class ReadCSV {
 		int y = 0;
 
 		for (int x : counts) {
+			System.out.println(x);
 			y += x;
 
 		}

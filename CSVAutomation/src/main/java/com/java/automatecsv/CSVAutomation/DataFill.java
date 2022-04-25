@@ -44,7 +44,7 @@ public class DataFill {
 			for (int k = 1; k < steps.get(j); k++) {
 
 				numOfIds.add(j);
-				title.add(ids.length );
+				title.add(ids.length);
 
 			}
 
@@ -75,14 +75,19 @@ public class DataFill {
 		for (int j = 0; j < steps.size() - 1; j++) {
 
 			// 1 //2 //9 //3
-			title.add(j);
-			numOfIds.add(j);
+
+			if (steps.get(j) != 0) {
+				title.add(j);
+				numOfIds.add(j);
+
+			}
 
 			for (int k = 1; k < steps.get(j); k++) {
 
-				numOfIds.add(j);
-				title.add(ids.length);
-
+				if (steps.get(j) != 0) {
+					numOfIds.add(j);
+					title.add(ids.length);
+				}
 			}
 
 		}
